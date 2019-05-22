@@ -2,13 +2,28 @@ package com.fraunhoferproject.event;
 
 import java.util.UUID;
 
+/**
+ * A Model representing an event and implementing a Builder pattern. 
+ * Once a Event is generate and build with the builder pattern, it becomes immutable
+ */
 public class EventModel {
     private String name;
+    /**
+     * Unique ID of the event
+     */
     private UUID id;
     private long unixTime;
     private String description;
     private int prediction;
 
+    /**
+     * A private constructor only use by the builder pattern
+     * @param name the name of the event
+     * @param id hte unique id of the event
+     * @param unixTime the current unix time
+     * @param description the description of the event
+     * @param prediction the prediction generated for this event
+     */
     private EventModel(String name, UUID id, long unixTime, String description, int prediction) {
         this.name = name;
         this.id = id;
@@ -17,10 +32,17 @@ public class EventModel {
         this.prediction = prediction;
     }
 
+    /**
+     * The only way to construct an EventModel.
+     * @return An event
+     */
     public static EventModelBuilder builder() {
         return new EventModelBuilder();
     }
 
+    /**
+     * All the getters of the model
+     */
     public String getName() {
         return this.name;
     }
@@ -41,6 +63,9 @@ public class EventModel {
         return this.prediction;
     }
 
+    /**
+     * The implementation of the builder pattern on a private class
+     */
     public static class EventModelBuilder {
         private String name;
         private UUID id;
@@ -76,6 +101,10 @@ public class EventModel {
             return this;
         }
 
+        /**
+         * The methode which build the event and return it
+         * @return a newly immutable builded event
+         */
         public EventModel build() {
             return new EventModel(name, id, unixTime, description, prediction);
         }

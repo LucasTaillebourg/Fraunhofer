@@ -7,10 +7,28 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+/**
+ * The service which generate an event
+ */
 @Service
 public class EventService {
-    
+
+    /**
+     * The description of an event by default
+     */
+    private static final String DEFAULT_EVENT_DESCRIPTION = "I am an event";
+    /**
+     * The name of an event by default
+     */
+    private static final String DEFAULT_EVENT_NAME = "Generated Event";
+
+    /**
+     * Service which generates the prediction
+     */
     private PredictionService predictionService;
+    /**
+     * Service which calculates the current unix time
+     */
     private UnixService unixService;
 
     @Autowired
@@ -20,11 +38,15 @@ public class EventService {
     }
 
 
+    /**
+     * The method which generates a new event
+     * @return the new event
+     */
     public EventModel generateEvent() {
         return EventModel.builder()
             .id(UUID.randomUUID())
-            .description("I am an event")
-            .name("Generated Event")
+            .description(DEFAULT_EVENT_DESCRIPTION)
+            .name(DEFAULT_EVENT_NAME)
             .prediction(predictionService.generatePrediction())
             .unixTime(unixService.generateUnixCurrentTimestamp())
             .build();

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EventRest {
 
-    /**
+    /**   
      * The service which generate the event
      */
     private EventService eventService;
@@ -29,7 +29,7 @@ public class EventRest {
     public EventModel generateEvent() {
         EventModel result = eventService.generateEvent();
         
-        if(result.getPrediction() > 30 ){
+        if(result.getPrediction() >= 30 ){
             return result;
         }
         

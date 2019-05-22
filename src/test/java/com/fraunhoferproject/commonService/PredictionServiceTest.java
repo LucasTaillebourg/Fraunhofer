@@ -14,10 +14,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@DisplayName("Test du mappeur d'echeance")
+@DisplayName("Prediction service test")
 @ExtendWith(MockitoExtension.class)
 class PredictionServiceTest {
-    @Mock Environment env;
+    @Mock private Environment env;
     
     private PredictionService predictionService;
     

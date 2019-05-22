@@ -1,5 +1,6 @@
 package com.fraunhoferproject.event;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +27,7 @@ public class EventRest {
      * @return a newly created event only if the prediction is over 30
      */
     @GetMapping("/generateEvent")
+    @ApiOperation(value = "Génère un event et le renvoie si sa prédiction est supérieure ou égale à 30%")
     public EventModel generateEvent() {
         EventModel result = eventService.generateEvent();
         

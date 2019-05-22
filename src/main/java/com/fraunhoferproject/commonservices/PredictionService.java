@@ -17,7 +17,7 @@ public class PredictionService {
      */
     private static final String PREDICTION_PROPERTY_KEY = "prediction";
     /**
-     * The envirronement which generate a random value in application.properties
+     * The environement which generate a random value in application.properties
      */
     private Environment env;
 

@@ -1,6 +1,5 @@
-package com.fraunhoferproject.commonService;
+package com.fraunhoferproject.commonservices;
 
-import com.fraunhoferproject.commonservices.PredictionService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,6 +16,7 @@ import static org.mockito.Mockito.when;
 @DisplayName("Prediction service test")
 @ExtendWith(MockitoExtension.class)
 class PredictionServiceTest {
+    public static final String PREDICTION_KEY = "prediction";
     @Mock private Environment env;
     
     private PredictionService predictionService;
@@ -24,7 +24,7 @@ class PredictionServiceTest {
     @Test
     @DisplayName("Should return the environement prediction")
     void should_return_the_environement_prediction(){
-        when(env.getProperty("prediction")).thenReturn("5");
+        when(env.getProperty(PREDICTION_KEY)).thenReturn("5");
         
         predictionService = new PredictionService(env);
         
@@ -37,7 +37,7 @@ class PredictionServiceTest {
     @Test
     @DisplayName("Should return throw a numberFormatException if the environement prediction return anything but an int")
     void should_throw_a_number_format_exception_if_env_return_anything_but_int(){
-        when(env.getProperty("prediction")).thenReturn("chain");
+        when(env.getProperty(PREDICTION_KEY)).thenReturn("chain");
 
         predictionService = new PredictionService(env);
         

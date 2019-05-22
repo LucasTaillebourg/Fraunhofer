@@ -108,9 +108,5 @@ public class EventModel {
         public EventModel build() {
             return new EventModel(name, id, unixTime, description, prediction);
         }
-
-        public String toString() {
-            return "EventModel.EventModelBuilder(name=" + this.name + ", id=" + this.id + ", unixTime=" + this.unixTime + ", description=" + this.description + ", prediction=" + this.prediction + ")";
-        }
     }
 }
